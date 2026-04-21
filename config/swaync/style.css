@@ -1,0 +1,83 @@
+/* Цвета как в Hyprland */
+@define-color bg rgba(30, 30, 30, 0.92);
+@define-color border #3c6eb4;
+@define-color text #d3dae3;
+@define-color hover #2d2d2d;
+@define-color urgent #f38ba8;
+
+/* Убираем скругления у всех элементов */
+* {
+  border-radius: 0px;
+}
+
+/* Окно уведомления */
+.notification-row {
+  outline: none;
+  margin: 6px 8px;
+}
+
+.notification {
+  background: @bg;
+  border: 2px solid @border;
+  padding: 8px;
+  margin: 0;
+  box-shadow: none;
+}
+
+/* Заголовок */
+.notification-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: @text;
+  margin-bottom: 4px;
+}
+
+/* Текст уведомления */
+.notification-body {
+  font-size: 11px;
+  color: @text;
+}
+
+/* Кнопки действий */
+.notification-default-action,
+.notification-action {
+  background: @bg;
+  border: 1px solid @border;
+  padding: 4px 8px;
+  margin: 4px 2px;
+  color: @text;
+  font-size: 10px;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+  background: @hover;
+}
+
+/* Кнопка "Очистить" */
+.widget-title button {
+  background: @bg;
+  border: 1px solid @border;
+  padding: 4px 8px;
+  font-size: 10px;
+  color: @text;
+}
+
+/* Центр управления */
+.control-center {
+  background: @bg;
+  border: 2px solid @border;
+  margin: 12px;
+  padding: 8px;
+}
+
+/* Иконка */
+.notification-icon {
+  margin-right: 8px;
+}
+
+/* Разделитель */
+.separator {
+  background: @border;
+  margin: 6px 0;
+}

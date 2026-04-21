@@ -1,0 +1,10 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    terminal: "kitty";
+    drun-display-format: "{name}";
+    click-to-exit: true;
+}
+
+@theme "theme.rasi"

@@ -1,0 +1,79 @@
+* {
+    font: "JetBrainsMono Nerd Font 11";
+    background-color: #1e1e1e;
+    text-color: #d3dae3;
+    border-color: #3c6eb4;
+}
+
+window {
+    width: 45%;
+    height: 50%;
+    location: center;
+    border: 2px;
+    border-radius: 0px;
+    background-color: #1e1e1e;
+    padding: 10px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 10px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    background-color: #2d2d2d;
+    border: 1px;
+    border-color: #3c6eb4;
+    padding: 6px;
+    spacing: 8px;
+}
+
+prompt {
+    text: "🔍 ";
+    text-color: #3c6eb4;
+}
+
+entry {
+    text-color: #d3dae3;
+    placeholder: "Поиск...";
+    placeholder-color: #070708;
+}
+
+listview {
+    scrollbar: true;
+    lines: 8;
+    dynamic: true;
+}
+
+element {
+    children: [ element-icon, element-text ];
+    spacing: 10px;
+    padding: 8px;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element-text {
+    text-color: #d3dae3;
+}
+
+element selected {
+    background-color: #1a1a1a;
+    text-color: #1a1a1a;
+    border: 2px;
+    border-color: #3c6eb4;
+}
+
+element selected element-text {
+    text-color: #ffffff;
+}
+
+scrollbar {
+    handle-width: 8px;
+    handle-color: #4a90e2;
+    background-color: #2d2d2d;
+    border-radius: 0px;
+}

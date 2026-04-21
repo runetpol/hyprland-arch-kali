@@ -1,0 +1,34 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "control-center-margin-top": 10,
+  "control-center-margin-right": 10,
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "cssPriority": "application",
+  "notification-window-width": 320,
+  "control-center-width": 380,
+  "transition-time": 150,
+  "timeout": 6,
+  "timeout-low": 3,
+  "timeout-critical": 0,
+  "fit-to-screen": true,
+  "control-center-height": 400,
+  "hide-on-clear": false,
+  "widgets": [
+    "dnd",
+    "title",
+    "notifications"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "Уведомления",
+      "clear-all-button": true,
+      "button-text": "Очистить"
+    },
+    "dnd": {
+      "text": "Не беспокоить"
+    }
+  }
+}
