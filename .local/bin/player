@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+
+# Цвета
+BLUE='\033[0;34m'
+NC='\033[0m'
+BOLD='\033[1m'
+
+art=(
+"┌────────────────────────┐"
+"│           ;            │"
+"│           ;;           │"
+"│           ;';.         │"
+"│           ;  ;;        │"
+"│           ;   ;;       │"
+"│           ;    ;;      │"
+"│           ;    ;;      │"
+"│           ;   ;'       │"
+"│           ;  '         │"
+"│      ,;;;,;            │"
+"│      ;;;;;;            │"
+"│      ';;;;'            │"
+"└────────────────────────┘"
+)
+
+prev_title=""
+prev_artist=""
+current_seconds=0
+duration_sec=0
+
+get_center() {
+    term_width=$(tput cols)
+    term_height=$(tput lines)
+    art_width=26
+    art_height=${#art[@]}
+    pad_left=$(( (term_width - art_width) / 2 ))
+    pad_top=$(( (term_height - art_height - 6) / 2 ))
+    [ "$pad_left" -lt 0 ] && pad_left=0
+    [ "$pad_top" -lt 0 ] && pad_top=0
+}
+
+get_track_info() {
+    title=$(playerctl metadata title 2>/dev/null)
+    artist=$(playerctl metadata artist 2>/dev/null)
+    real_position=$(playerctl position 2>/dev/null)
+    duration=$(playerctl metadata mpris:length 2>/dev/null)
+    
+    [ -z "$duration" ] && duration=0
+    if [ "$duration" -gt 0 ] && [ "$duration_sec" -eq 0 ]; then
+        duration_sec=$(echo "$duration / 1000000" | bc 2>/dev/null || echo 0)
+    fi
+    
+    if [ "$title" != "$prev_title" ] || [ "$artist" != "$prev_artist" ]; then
+        prev_title="$title"
+        prev_artist="$artist"
+        current_seconds=$(printf "%.0f" "$real_position" 2>/dev/null || echo 0)
+    else
+        status=$(playerctl status 2>/dev/null)
+        if [ "$status" = "Playing" ]; then
+            current_seconds=$((current_seconds + 1))
+        fi
+    fi
+}
+
+while true; do
+    get_track_info
+    
+    minutes=$((current_seconds / 60))
+    seconds=$((current_seconds % 60))
+    time_str="${minutes}:$(printf "%02d" $seconds)"
+    
+    if [ "$duration_sec" -gt 0 ]; then
+        progress_len=20
+        pos=$((current_seconds * progress_len / duration_sec))
+        [ "$pos" -gt $progress_len ] && pos=$progress_len
+        [ "$pos" -lt 0 ] && pos=0
+        
+        # Собираем прогресс-бар с помощью sed (корректная работа с UTF-8)
+        if [ $pos -eq 0 ]; then
+            right=$(printf "%${progress_len}s" "" | sed 's/ /━/g')
+            progress="●${right}"
+        elif [ $pos -eq $progress_len ]; then
+            left=$(printf "%${progress_len}s" "" | sed 's/ /━/g')
+            progress="${left}●"
+        else
+            left=$(printf "%${pos}s" "" | sed 's/ /━/g')
+            right=$(printf "%$((progress_len - pos))s" "" | sed 's/ /━/g')
+            progress="${left}●${right}"
+        fi
+    else
+        progress=$(printf "%20s" "" | sed 's/ /━/g')
+    fi
+    
+    get_center
+    
+    clear
+    for ((i=0; i<pad_top; i++)); do echo; done
+    
+    for line in "${art[@]}"; do
+        printf "%${pad_left}s${BLUE}${BOLD}%s${NC}\n" "" "$line"
+    done
+    
+    echo ""
+    printf "%${pad_left}s${BLUE}${BOLD}%s${NC}\n" "" "${title:-музыка}"
+    printf "%${pad_left}s${BLUE}%s${NC}\n" "" "${artist:-Исполнитель}"
+    echo ""
+    printf "%${pad_left}s%31s %s\n" "" "$progress" "$time_str"
+    echo ""
+    printf "%${pad_left}s%13s\n" "" "        ◀   ⏸   ▶"
+    
+    read -rsn1 -t 1 input
+    case "$input" in
+        ' ') playerctl play-pause ;;
+        '◀') playerctl previous ;;
+        '▶') playerctl next ;;
+        'q') clear; exit 0 ;;
+    esac
+done

@@ -1,0 +1,12 @@
+[1;32mDEBUG [0m]: Welcome to hyprpaper!
+built from commit  ()
+[1;32mDEBUG [0m]: Found 1 output(s)
+[1;33mWARN [0mfrom aquamarine ]: GBM: Using modifier-less allocation
+[1;33mWARN [0mfrom aquamarine ]: GBM: Using modifier-less allocation
+
+==========================================================================================
+ASSERTION FAILED! 
+
+[core] Disconnected from pollfd id 0
+
+at: line 357 in Backend.cpp[HT] Assertion failed!
