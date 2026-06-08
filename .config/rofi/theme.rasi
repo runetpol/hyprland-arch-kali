@@ -1,7 +1,7 @@
 * {
     font: "JetBrainsMono Nerd Font 11";
-    background-color: #1e1e1e;
-    text-color: #d3dae3;
+    background-color: #23252e;
+    text-color: #ffffff;
     border-color: #3c6eb4;
 }
 
@@ -9,9 +9,10 @@ window {
     width: 45%;
     height: 50%;
     location: center;
-    border: 2px;
-    border-radius: 0px;
-    background-color: #1e1e1e;
+    border: 1px ;
+    border-color: #17191f;
+    border-radius: 5px;
+    background-color: #23252e;
     padding: 10px;
 }
 
@@ -22,22 +23,27 @@ mainbox {
 
 inputbar {
     children: [ prompt, entry ];
-    background-color: #2d2d2d;
+    background-color: #1b1d24;
     border: 1px;
-    border-color: #3c6eb4;
+    border-radius: 4px;
+    border-color: #17191f;
     padding: 6px;
     spacing: 8px;
 }
 
 prompt {
     text: "🔍 ";
-    text-color: #3c6eb4;
+    text-color: #6d7a8f;
+    border: 1px;
+    border-radius: 3px;
+    border-color: #17191f;
 }
 
 entry {
-    text-color: #d3dae3;
+    text-color: #ffffff;
     placeholder: "Поиск...";
-    placeholder-color: #070708;
+    placeholder-color: #6d7a8f;
+    background-color: transparent;
 }
 
 listview {
@@ -56,15 +62,25 @@ element-icon {
     size: 24px;
 }
 
+element-icon selected {
+    background-color: transparent;
+}
+
+element-text selected {
+    background-color: transparent;
+}
+
 element-text {
-    text-color: #d3dae3;
+    text-color: #ffffff;
 }
 
 element selected {
-    background-color: #1a1a1a;
-    text-color: #1a1a1a;
-    border: 2px;
-    border-color: #3c6eb4;
+    background-color: #323643;
+    text-color: #323643;
+    background-text: #323643;
+    border-radius: 5px;
+    border: 1px;
+    border-color: #17191f;
 }
 
 element selected element-text {
@@ -73,7 +89,10 @@ element selected element-text {
 
 scrollbar {
     handle-width: 8px;
-    handle-color: #4a90e2;
-    background-color: #2d2d2d;
-    border-radius: 0px;
+    handle-rounded-corners: true;
+    handle-color: #2a72ee;
+    background-color: #272a34;
+    border-radius: 2px;
+    border: 1px; 
+    border-color: #17191f;
 }

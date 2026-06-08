@@ -2,115 +2,177 @@
 * {
     font-family: "Hack Nerd Font", "JetBrainsMono Nerd Font", "Symbols Nerd Font", monospace;
     font-size: 13px;
-    min-height: 0;
+    min-height: 0px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 /* Panel */
 window#waybar {
-    background: rgba(30, 30, 30, 0.85);
-    border-bottom: 2px solid #1a1a1a;
-    color: #d3dae3;
+    background: rgba(30, 35, 43, 0.85);
+    border-bottom: 1px solid rgb(38, 38, 38);
+    color: #ffffff;
 }
-
-/* Logo */
-#custom-logo {
-    background-image: url("/home/haunt/.config/waybar/icons/arch.png");
+#custom-firefox {
+    background-image: url("/home/haunt/.config/waybar/icons/firefox-3.0.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    min-width: 25px;
-    min-height: 25px;
-    border-bottom: 2px solid #1a1a1a;
+    min-width: 26px;
+    min-height: 26px;
+    margin: 2
+}
+#custom-telegram {
+    background-image: url("/home/haunt/.config/waybar/icons/telegram-desktop-bin.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 26px;
+    min-height: 26px;
+    margin: 2
+}
+#custom-thunar {
+    background-image: url("/home/haunt/.config/waybar/icons/thunar.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 26px;
+    min-height: 26px;
+    margin: 2
+}
+#custom-terminal {
+    background-image: url("/home/haunt/.config/waybar/icons/terminal.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 26px;
+    min-height: 26px;
+    margin: 2
+}
+#custom-terminal:hover,
+#custom-thunar:hover,
+#custom-telegram:hover,
+#custom-firefox:hover {
+    box-shadow: rgba(1, 1, 1, 0.2);
+    padding: 1
+}
+
+#custom-separator {
+    color: #ffffff;
+    font-size: 18px;
+    border-bottom: 2px solid transparent;
+}
+
+#wireplumber {
+    color:#d3dae3;
+    font-size: 15px;
+    padding: 0px 6px;
+    margin-right: 3px;
+}
+
+#custom-lock {
+    color:#d3dae3;
+    font-size: 15px;
+    padding: 0px 6px;
+}
+
+#custom-player {
+    font-weight: bold;
+    color:#d3dae3;
+    padding: 0px 6px;
+    font-size: 15px;
+}
+
+#custom-logo {
+    background-image: url("/home/haunt/icons/kali-panel-menu.svg");
+    background-color: rgba(0, 106, 255, 0.555);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 26px;
+    min-height: 26px;
+
+    box-shadow: 0px 0px 10px 6px rgba(0, 106, 255, 0.7);
+    border-radius: 1px;
+    margin: 2px;
 }
 
 #custom-logo:hover {
-    border-bottom: 2px solid #3c6eb4;
+    border-bottom: 2px solid #2677fd;
 }
 
 /* Poweroff */
 #custom-poweroff {
     font-size: 16px;
-    margin-right: 1px;
-    margin-left: 1px;
-    color: #3c6eb4;
+    padding: 0px 6px;
+    color: #eceff3;
+}
+
+#wlr-taskbar {
+    
+    border-bottom: 2px solid #2677fd;
 }
 
 /* Workspaces */
 #workspaces button {
-    padding: 0 10px;
+    padding: 0px 8px;
     background: transparent;
-    border-radius: 0;
+    border-radius: 0px;
     color: #d3dae3;
 }
 
 #workspaces button.active {
-    background: #1a1a1a;
+    background: rgba(30,30,30, 0.6);
     color: #ffffff;
-    border-bottom: 2px solid #3c6eb4;
+    border-bottom: 1.8px solid #2677fd;
+    border-radius: 0px;
 }
 
 #workspaces button:hover {
-    background: #3a3a3a;
-    border-bottom: 2px solid #4a90e2;
-}
-
-/* Window title */
-#window {
-    background: transparent;
-    padding: 0 4px;
-    font-weight: normal;
-}
-
-/* Modules spacing */
-.modules-right > * {
-    margin-left: 4px;
-    margin-right: 4px;
+    background: #2c2c2c;
 }
 
 /* Clock */
 #clock {
-    margin-right: 1px;
-    margin-left: 1px;
-    font-weight: bold;
-    color: #d3dae3;
+    color: #eceff3;
+    padding: 0px 6px;
 }
 
 /* Language */
 #language {
-    margin-right: 1px;
-    margin-left: 1px;
     font-weight: bold;
-    color: #d3dae3;
+    color: #eceff3;
+    padding: 0px 6px;
 }
 
 /* Media controls */
 #custom-playpause {
-    color: #d3dae3;
-    padding: 0 4px;
+    color: #eceff3;
+    padding: 0px 6px;
     font-weight: bold;
     font-size: 20px;
-    margin-right: 1px;
-    margin-left: 1px;
+}
+
+#custom-cpugpu {
+    color:#eceff3;
+    padding: 0px 6px;
 }
 
 /* Notifications widget */
 #custom-notifications {
-    padding: 0 4px;
+    padding: 0px 6px;
     font-weight: bold;
-    color: #d3dae3;
-    margin-right: 1px;
-    margin-left: 1px;
+    color: #eceff3;
+    font-size: 15px;
 }
 
 /* Tray */
 #tray {
-    padding: 0 4px;
+    padding: 0px 6px;
 }
 
 #tray > * {
-    margin: 0 4px;
+    margin: 0px 4px;
 }
 
 /* System widgets */
@@ -120,17 +182,21 @@ window#waybar {
 #network,
 #battery {
     font-weight: bold;
-    padding: 0 6px;
+    padding: 0px 6px;
     color: #d3dae3;
 }
+
 
 /* Hover для всех кликабельных */
 #language:hover,
 #custom-poweroff:hover,
 #clock:hover,
+#custom-cpugpu:hover,
 #custom-notifications:hover,
 #custom-playpause:hover,
+#custom-player:hover,
 #cpu:hover,
+#custom-lock:hover,
 #memory:hover,
 #wireplumber:hover,
 #network:hover,
@@ -142,14 +208,15 @@ window#waybar {
 /* Wireplumber mute state */
 #wireplumber.muted {
     color: #f38ba8;
+    font-size: 17px;
 }
 
 /* Tooltip */
 tooltip {
     background: rgba(0, 0, 0, 0.8);
     color: #d3dae3;
-    border: 1px solid #3c6eb4;
-    border-radius: 4px;
+    border: 1px solid #2677fd;
+    border-radius: 1px;
     padding: 6px 8px;
     font-size: 12px;
 }

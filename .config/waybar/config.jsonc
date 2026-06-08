@@ -2,13 +2,95 @@
     "layer": "top",
     "position": "top",
     "height": 32,
-    "modules-left": ["custom/logo", "hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "custom/notifications", "custom/prev", "custom/playpause", "custom/next", "wireplumber", "memory", "cpu", "hyprland/language", "clock", "custom/poweroff"],
+    "modules-left": ["custom/logo", "custom/separator", "custom/firefox", "custom/telegram", "custom/thunar", "custom/terminal","custom/separator","hyprland/workspaces", "custom/separator", "wlr/taskbar"],
+    "modules-center": [""],
+    "modules-right": ["tray", "custom/player", "custom/notifications", "wireplumber", "custom/cpugpu", "hyprland/language", "clock", "custom/separator", "custom/lock", "custom/poweroff"],
 
-    "hyprland/workspaces": {
+    "custom/firefox": {
+        "format": " ",
+        "on-click": "firefox",
+        "tooltip": false
+    },
+    "custom/telegram": {        
+        "format": " ",
+        "on-click": "Telegram",
+        "tooltip": false
+    },
+    "custom/thunar":{
+        "format": " ",
+        "on-click": "thunar",
+        "tooltip": false
+    },
+    "custom/terminal": {  
+        "format": " ",
+        "on-click": "kitty",
+        "tooltip": false
+    },
+
+    "custom/lock": {
+        "format": "",
+        "on-click": "gtklock",
+        "tooltip": false
+    },
+
+    "wlr/taskbar": {
         "format": "{icon}",
-        "on-click": "activate"
+        "icon-size": 25,
+        "all-outputs": false,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "workspace-taskbar": true,
+        "ignore-list": [
+        "kitty"
+    ]
+    },
+
+    "custom/player": {
+        "format": "♪",
+        "on-click": "kitty -e player",
+        "tooltip": false
+    },
+
+    "custom/separator": {
+        "format": "│",
+        "tooltip": false
+    },
+
+"hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+    },
+    "on-click": "activate",
+    "ignore-workspaces": ["6"],
+    "active-only": false,
+    "all-outputs": true,
+    "show-special": true,
+    "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+    }
+},
+
+    "wlr/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
     },
 
     "custom/logo": {
@@ -17,54 +99,42 @@
         "tooltip": false
     },
 
-"custom/poweroff": {
-    "format": "  ",
-    "tooltip": false,
-    "on-click": "shutdown now"
-},
+    "custom/poweroff": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "shutdown now"
+    },
 
     "hyprland/language": {
         "format": "{}",
-        "format-en": " EN ",
-        "format-ru": " RU ",
+        "format-en": "EN",
+        "format-ru": "RU",
         "on-click": "hyprctl switchxkblayout $(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .name') next"
     },
 
     "clock": {
         "format": "{:%H:%M}",
-        "format-alt": "{:%d.%m.%Y %A}",
+        "format-alt": "{:%d.%m.%Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "interval": 60
     },
 
-    "cpu": {
-        "interval": 3,
-        "format": " {usage}%",
-        "on-click": "kitty -e htop"
-    },
-
-    "memory": {
-        "interval": 5,
-        "format": " {percentage}%",
-        "on-click": "kitty -e btop"
+    "custom/cpugpu": {
+        "format": "",
+        "exec": "~/.config/waybar/scripts/energy.sh",
+        "on-click": "kitty -e btop",
+        "tooltip": true,
+        "return-type": "json",
+        "interval": 2
     },
 
     "wireplumber": {
         "scroll-step": 5,
-        "format": "{icon} {volume}%",
-        "format-muted": " 0%",
+        "format": "{icon}",
+        "format-muted": "",
         "format-icons": ["", "", ""],
-        "on-click": "simple-wireplumber-gui",
+        "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-    },
-
-    "custom/playpause": {
-        "format": "{}",
-        "on-click": "playerctl play-pause",
-        "tooltip": false,
-        "interval": 4,
-        "exec": "sh -c \"if playerctl status 2>/dev/null | grep -q Playing; then echo '⏸'; else echo '⏵'; fi\"",
-        "exec-if": "which playerctl"
     },
 
     "custom/notifications": {
